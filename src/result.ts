@@ -1,14 +1,14 @@
-import { HttpStatus } from "@nestjs/common";
+import { HttpStatus } from '@nestjs/common';
 
-export interface ResponseData<T> {
-  code: number;
+export interface IResponseData<T> {
+  code: HttpStatus;
   msg: string;
   data: T;
 }
 
 export class ResponseData<T> {
   constructor(
-    public code: HttpStatus.OK,
+    public code = HttpStatus.OK,
     public msg: string,
     public data: T,
   ) {
