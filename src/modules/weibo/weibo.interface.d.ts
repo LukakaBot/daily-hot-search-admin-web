@@ -43,7 +43,7 @@ export interface WeiboHotSearchDataRealtimeItem {
   small_icon_desc: string;
   small_icon_desc_color: string;
   emoticon: string;
-  word_scheme: string;
+  word_scheme?: string;
   realpos: number;
   topic_flag: number;
   word: string;

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DouyinModule } from './douyin/douyin.module';
-import { WeiboModule } from './weibo/weibo.module';
+import { DouyinModule } from './modules/douyin/douyin.module';
+import { WeiboModule } from './modules/weibo/weibo.module';
 
 @Module({
   imports: [DouyinModule, WeiboModule],
