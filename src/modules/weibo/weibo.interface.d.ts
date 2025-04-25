@@ -37,6 +37,7 @@ export interface WeiboHotSearchDataHotgov {
 export interface WeiboHotSearchDataRealtimeItem {
   icon_width: number;
   icon_desc: string;
+  flag_desc?: string;
   flag: number;
   icon_desc_color: string;
   note: string;
