@@ -12,11 +12,14 @@ export class WeiboService {
   constructor(private readonly httpService: HttpService) { }
 
   filterWeiboHotSearchData(list: WeiboHotSearchDataRealtimeItem[]) {
-    return list.map(item => {
+    return list.map((item, index) => {
       const param = item?.word_scheme ? item.word_scheme : `#${item.word}#`;
       return {
+        ...item,
+        id: index + 1,
+        title: item.word,
+        desc: item.note,
         url: `https://s.weibo.com/weibo?q=${encodeURIComponent(param)}&t=31&band_rank=1&Refer=top`,
-        ...item
       }
     })
   }
