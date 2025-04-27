@@ -5,8 +5,11 @@ import { HttpExceptionFilter } from './filters/http-execption.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   app.useGlobalInterceptors(new TransformInterceptor());
   app.useGlobalFilters(new HttpExceptionFilter());
+  app.setGlobalPrefix('/hotSearch');
+
   await app.listen(process.env.PORT ?? 3000);
 }
 
