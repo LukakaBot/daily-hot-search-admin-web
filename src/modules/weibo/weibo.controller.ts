@@ -5,7 +5,7 @@ import { WeiboService } from './weibo.service';
 export class WeiboController {
   constructor(private readonly weiboService: WeiboService) { }
 
-  @Get('/hotSearch')
+  @Get('/')
   async getHotSearch() {
     return this.weiboService.getHotSearch();
   }
