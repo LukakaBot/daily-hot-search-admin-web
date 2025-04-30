@@ -1,3 +1,5 @@
+import { AxiosRequestConfig } from 'axios';
+
 export interface HotSearchDataItem {
   id: number;
   title: string;
@@ -7,3 +9,7 @@ export interface HotSearchDataItem {
   hots: number;
   url: string;
 }
+
+export type THeaders = AxiosRequestConfig['headers'] & {
+  Cookie?: string;
+};
