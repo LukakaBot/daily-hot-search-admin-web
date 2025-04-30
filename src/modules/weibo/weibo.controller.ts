@@ -6,8 +6,8 @@ export class WeiboController {
   constructor(private readonly weiboService: WeiboService) { }
 
   @Get('/')
-  async getHotSearch() {
-    return this.weiboService.getHotSearch();
+  async getHotSearchData() {
+    return this.weiboService.getHotSearchData();
   }
 
   @Get('/hot')

@@ -24,7 +24,7 @@ export class WeiboService {
     })
   }
 
-  async getHotSearch() {
+  async getHotSearchData() {
     const url = 'https://weibo.com/ajax/side/hotSearch';
 
     const res = await firstValueFrom(

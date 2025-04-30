@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DouyinModule } from './modules/douyin/douyin.module';
 import { WeiboModule } from './modules/weibo/weibo.module';
+import { BilibiliModule } from './modules/bilibili/bilibili.module';
 import configuration from 'config/configuration.ts';
 
 @Module({
@@ -13,7 +14,8 @@ import configuration from 'config/configuration.ts';
       isGlobal: true,
     }),
     DouyinModule,
-    WeiboModule
+    WeiboModule,
+    BilibiliModule
   ],
   controllers: [AppController],
   providers: [AppService],
