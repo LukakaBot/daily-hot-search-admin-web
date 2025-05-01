@@ -12,6 +12,7 @@ import configuration from 'config/configuration.ts';
     ConfigModule.forRoot({
       load: [configuration],
       isGlobal: true,
+      envFilePath: ['.env', '.env.development', '.env.production']
     }),
     DouyinModule,
     WeiboModule,
