@@ -99,8 +99,8 @@ export class BilibiliService {
         id,
         title,
         desc,
-        url: `https://www.bilibili.com/video/${item.bvid}`,
-        // url: item.short_link_v2,
+        url: `https://www.bilibili.com/video/${bvid}`,
+        // url: short_link_v2,
       };
     });
 
