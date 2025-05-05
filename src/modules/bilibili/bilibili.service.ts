@@ -5,8 +5,6 @@ import { THeaders } from '@/typings/global';
 import { BilibiliApiResponse, BilibiliUserNavData, BilibiliVideoRankData } from './interfaces/bilibili.interface';
 import { createHash } from 'crypto';
 
-import { MD5 } from 'crypto-js';
-
 @Injectable()
 export class BilibiliService {
   constructor(private readonly httpservice: HttpService) {}
@@ -43,11 +41,6 @@ export class BilibiliService {
       .join('&');
 
     const wbiSign = this.md5.update(query + mixinKey).digest('hex'); // 计算 w_rid
-    const wbiSign2 = MD5(query + mixinKey).toString();
-    console.log('wbiSign');
-    console.log(wbiSign);
-    console.log('wbiSign2');
-    console.log(wbiSign2);
 
     return query + '&w_rid=' + wbiSign;
   }
@@ -99,6 +92,17 @@ export class BilibiliService {
     } = await firstValueFrom(
       this.httpservice.get<BilibiliApiResponse<BilibiliVideoRankData>>(url).pipe(map((res) => res.data)),
     );
+
+    return list.map((item, index) => {
+      const { id, title, desc, bvid, short_link_v2 } = item;
+      return {
+        id,
+        title,
+        desc,
+        url: `https://www.bilibili.com/video/${item.bvid}`,
+        // url: item.short_link_v2,
+      };
+    });
 
     return list;
   }

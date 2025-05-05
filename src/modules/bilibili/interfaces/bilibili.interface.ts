@@ -49,7 +49,14 @@ export interface BilibiliVideoRankStat {
   like_g: number;
 }
 
+export interface BilibiliVideoRankDimension {
+  width: number;
+  height: number;
+  rotate: number;
+}
+
 export interface BilibiliVideoRank {
+  id: number;
   aid: number;
   videos: number;
   tid: number;
@@ -66,11 +73,26 @@ export interface BilibiliVideoRank {
   rights: BilibiliVideoRankRights;
   owner: BilibiliVideoRankOwner;
   stat: BilibiliVideoRankStat;
+  dynamic: string;
+  cid: number;
+  dimension: BilibiliVideoRankDimension;
+  season_id: number;
+  short_link_v2: string;
+  first_frame: string;
+  pub_location: string;
+  cover43: string;
+  tidv2: number;
+  tnamev2: string;
+  pid_v2: number;
+  pid_name_v2: string;
+  bvid: string;
+  score: number;
+  enable_vt: number;
 }
 
 export interface BilibiliVideoRankData {
   note: string;
-  list: BilibiliVideoRank;
+  list: BilibiliVideoRank[];
 }
 
 export interface BilibiliApiResponse<T = any> {
