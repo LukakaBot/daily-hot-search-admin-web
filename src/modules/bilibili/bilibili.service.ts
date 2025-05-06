@@ -24,19 +24,19 @@ export class BilibiliService {
   }
 
   /** 为请求参数进行 wbi 签名 */
-  encWbi(params: { [key: string]: string | number | object }, imgKey: string, subKey: string) {
+  encWbi(params: { [key: string]: string | number }, imgKey: string, subKey: string) {
     const mixinKey = this.generateMixinKey(imgKey + subKey),
       currentTime = Math.round(Date.now() / 1000),
       chrFilter = /[!'()*]/g;
 
     Object.assign(params, { wts: currentTime }); // 添加 wts 字段
     // 按照 key 重排参数
-    const query = Object.keys(params)
+    const query = Object.entries(params)
       .sort()
-      .map((key) => {
+      .map(([key, value]) => {
         // 过滤 value 中的 "!'()*" 字符
-        const value = params[key].toString().replace(chrFilter, '');
-        return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+        const _value = value.toString().replace(chrFilter, '');
+        return `${encodeURIComponent(key)}=${encodeURIComponent(_value)}`;
       })
       .join('&');
 
@@ -79,12 +79,11 @@ export class BilibiliService {
       imgKey = webKeys.imgKey,
       subKey = webKeys.subKey;
     const query = this.encWbi(params, imgKey, subKey);
-    console.log(query);
     return query;
   }
 
   async getHotSearchData() {
-    const wbiSignParams = this.getWbiSignParams();
+    const wbiSignParams = await this.getWbiSignParams();
     const url = `https://api.bilibili.com/x/web-interface/ranking/v2?tid=0&type=all&${wbiSignParams}`;
 
     const {
