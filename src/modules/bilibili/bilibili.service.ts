@@ -94,16 +94,13 @@ export class BilibiliService {
     );
 
     return list.map((item, index) => {
-      const { title, desc, bvid, short_link_v2 } = item;
+      const { title, desc, short_link_v2 } = item;
       return {
         id: index,
         title,
         desc,
-        // url: `https://www.bilibili.com/video/${bvid}`,
         url: short_link_v2,
       };
     });
-
-    return list;
   }
 }
