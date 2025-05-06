@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { DouyinModule } from './modules/douyin/douyin.module';
 import { WeiboModule } from './modules/weibo/weibo.module';
 import { BilibiliModule } from './modules/bilibili/bilibili.module';
+import { JuejinModule } from './modules/juejin/juejin.module';
 import configuration from 'config/configuration.ts';
 
 @Module({
@@ -16,7 +17,8 @@ import configuration from 'config/configuration.ts';
     }),
     DouyinModule,
     WeiboModule,
-    BilibiliModule
+    BilibiliModule,
+    JuejinModule
   ],
   controllers: [AppController],
   providers: [AppService],

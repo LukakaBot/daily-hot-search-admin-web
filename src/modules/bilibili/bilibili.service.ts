@@ -7,7 +7,7 @@ import { createHash } from 'crypto';
 
 @Injectable()
 export class BilibiliService {
-  constructor(private readonly httpservice: HttpService) {}
+  constructor(private readonly httpservice: HttpService) { }
 
   md5 = createHash('md5');
   MIXIN_KEY_ENC_TAB = [
@@ -94,13 +94,13 @@ export class BilibiliService {
     );
 
     return list.map((item, index) => {
-      const { id, title, desc, bvid, short_link_v2 } = item;
+      const { title, desc, bvid, short_link_v2 } = item;
       return {
-        id,
+        id: index,
         title,
         desc,
-        url: `https://www.bilibili.com/video/${bvid}`,
-        // url: short_link_v2,
+        // url: `https://www.bilibili.com/video/${bvid}`,
+        url: short_link_v2,
       };
     });
 
