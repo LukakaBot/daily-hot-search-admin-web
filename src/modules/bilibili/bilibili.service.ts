@@ -95,7 +95,7 @@ export class BilibiliService {
     return list.map((item, index) => {
       const { title, desc, short_link_v2 } = item;
       return {
-        id: index,
+        id: index + 1,
         title,
         desc,
         url: short_link_v2,

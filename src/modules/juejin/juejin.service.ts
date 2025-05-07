@@ -19,7 +19,7 @@ export class JuejinService {
     return data.map((item, index) => {
       const { title, brief, content_id } = item.content;
       return {
-        id: index,
+        id: index + 1,
         title,
         desc: brief,
         url: `https://juejin.cn/post/${content_id}`,
