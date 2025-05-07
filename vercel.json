@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "outputDirectory": "dist",
-  "buildCommand": "pnpm build",
   "builds": [
     {
       "src": "dist/src/main.js",
