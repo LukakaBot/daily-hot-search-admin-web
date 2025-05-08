@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/pnpm"
+      "use": "@vercel/static-build"
     },
     {
       "src": "dist/src/main.js",
