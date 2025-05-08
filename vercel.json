@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "installCommand": "pnpm install",
-  "buildCommand": "nest build",
-  "outputDirectory": "dist",
   "builds": [
     {
       "src": "dist/src/main.js",
