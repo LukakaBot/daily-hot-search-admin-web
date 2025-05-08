@@ -2,6 +2,7 @@
   "version": 2,
   "installCommand": "pnpm install",
   "buildCommand": "nest build",
+  "outputDirectory": "dist",
   "functions": {
     "dist/src/main.js": {
       "maxDuration": 60
