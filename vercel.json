@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "installCommand": "pnpm install --prod=false",
-  "buildCommand": "pnpm build && pnpm start:prod",
-  "outputDirectory": "dist",
   "builds": [
     {
       "src": "package.json",
