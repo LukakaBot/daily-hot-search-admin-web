@@ -3,11 +3,12 @@
   "installCommand": "pnpm install",
   "buildCommand": "nest build",
   "outputDirectory": "dist",
-  "functions": {
-    "dist/src/main.js": {
-      "maxDuration": 60
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/(.*)",
