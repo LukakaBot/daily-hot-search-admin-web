@@ -12,8 +12,8 @@ async function bootstrap() {
 
   const config = app.get(ConfigService);
   app.setGlobalPrefix(config.get<string>('app.prefix')!);
-  // app.enableCors(config.get('cors'));
-  app.enableCors({ origin: true }); // 仅用于调试，上线前移除
+  app.enableCors(config.get('cors'));
+  // app.enableCors({ origin: true }); // 仅用于调试，上线前移除
 
   await app.listen(process.env.PORT ?? 3000);
 }
