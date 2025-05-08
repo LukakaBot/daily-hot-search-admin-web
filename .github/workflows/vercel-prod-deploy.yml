@@ -1,0 +1,58 @@
+name: Vercel Production Deployment
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 代码检出
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. 设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+
+      # 3. 安装依赖（带缓存）
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: |
+            **/node_modules
+            dist
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      # 4. 构建 NestJS 项目
+      - name: Build Project
+        run: npm run build
+
+      # 5. 部署到 Vercel
+      - name: Deploy to Vercel
+        uses: BetaHuhn/deploy-to-vercel-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          # 生产环境强制部署
+          production: ${{ github.ref == 'refs/heads/main' }}
+          # 路由配置指向构建产物
+          working-directory: dist
+          # 自动注释 PR
+          comment-on-pr: true
